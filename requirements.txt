@@ -9,6 +9,7 @@ itsdangerous==0.24
 Jinja2==2.10
 MarkupSafe==1.0
 marshmallow==2.15.3
+marshmallow-sqlalchemy==0.14.0
 multipledispatch==0.5.0
 networkx==2.1
 numpy==1.15.0
