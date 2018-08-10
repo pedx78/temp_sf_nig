@@ -27,16 +27,62 @@ def get_customer(id):
     return jsonify(result)
 
 
+@app.route('/customer360/get/<id>', methods=['GET'])
+def get_customer360(id):  
+    c = Customer.query.filter_by(customer_index=id).first()
+    # result = c_schema.dump(c)
+    transactions = Transaction.query.filter_by(customer_no=c.customer_no)
+    print('txns_ {}'.format(transactions[3].payer_name))
+
+    result = {
+        "name": c.customer_no,
+        "stats": {
+            "age": c.customer_age,
+            # "dob": "1990-01-01",
+            "segment": c.customer_type,
+            "Average balance": c.avg_weighted_bal,
+            "deposits": c.total_deposit_amt,        
+            }
+    }
+
+    t_dicts = []
+    for t in transactions:
+        t_dicts.append({
+            "date": t.date,
+            "type": t.transaction_type,
+            "amount": t.amount
+        })
+
+    trans = {
+        "transactions": t_dicts
+    }
+
+    return jsonify(result, trans)
+
+
+
+
 @app.route('/transactions/get/<id>', methods=['GET'])
 def get_transaction(id):  
-    # h = Historical.query.all()
     c = Transaction.query.filter_by(transaction_index=id).first()
     result = c_schema.dump(c)
-    # result = h_schema.dump(h)
-    # print("hist- {}".format(h))
+
     return jsonify(result)
 
 
+@app.route('/dummy', methods=['GET'])
+def get_dummy():  
+
+    name = {'name': 'Holly'} 
+    trans = {
+        "transactions": [
+            {
+            "date": "1990-01-02",
+            "type": "C",
+            "amount": "+100"
+            }]
+    }
+    return jsonify(name, trans)
 
 # @app.route('/load', methods=['PUT'])
 # def load():

@@ -1,13 +1,6 @@
 
 from odo import odo, resource, discover
-# import numpy as np
 
-# x = np.ones((5, 6), dtype='f4')
-# print(discover(x))
-# dshape("5 * 6 * float32")
-
-
-# 
 # csv = resource('customer_type.csv')
 csv = resource('transactions.csv')
 
@@ -60,50 +53,5 @@ var * {
   }
 
 
-
-
-------------------
-historical
------------------
-var * {
-  cust_id: int64,
-  customer_no: ?string,
-  mobile: ?string,
-  identity_type: ?string,
-  customer_age: int64,
-  gender: ?string,
-  account_no: ?string,
-  account_age_in_days: date,
-  account_age_in_seconds: date,
-  regis_year: ?string,
-  regis_month: ?string,
-  regis_weekday: ?string,
-  tot_bal_duration: int64,
-  max_bal_duration: int64,
-  min_bal_duration: int64,
-  avg_bal_duration: float64,
-  total_weighted_bal: float64,
-  avg_weighted_bal: float64,
-  tot_num_deposit: int64,
-  total_deposit_amt: float64,
-  max_deposit_amt: float64,
-  min_deposit_amt: float64,
-  avg_deposit_amt: float64,
-  tot_num_withdrawal: int64,
-  total_withdrawal_amt: float64,
-  min_withdrawal_amt: float64,
-  max_withdrawal_amt: float64,
-  avg_withdrawal_amt: float64,
-  avg_deposit_amount_per_day: float64,
-  avg_num_deposit_per_day: float64,
-  avg_withdrawal_amount_per_day: float64,
-  avg_num_withdrawal_per_day: float64,
-  last_deposit_amount: float64,
-  last_withdrawal_amount: float64,
-  time_since_last_deposit: int64,
-  time_since_last_withdrawal: int64,
-  balance: float64,
-  weighted_bal: float64
-  }
   """
 
